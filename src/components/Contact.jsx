@@ -8,14 +8,11 @@ const Contact = ({ listing }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/user/${listing.userRef}`,
-          {
-            headers: {
-              token: localStorage.getItem('access_token'),
-            },
-          }
-        );
+        const res = await axios.get(`/api/user/${listing.userRef}`, {
+          headers: {
+            token: localStorage.getItem('access_token'),
+          },
+        });
         console.log(res.data);
         setLandlord(res.data);
       } catch (error) {

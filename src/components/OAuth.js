@@ -18,7 +18,7 @@ function OAuth() {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
       dispatch(signInStart());
-      const res = await axios.post('http://localhost:5000/api/auth/google', {
+      const res = await axios.post('/api/auth/google', {
         name: result.user.displayName,
         photo: result.user.photoURL,
         email: result.user.email,

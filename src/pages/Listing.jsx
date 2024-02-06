@@ -29,9 +29,7 @@ const Listing = () => {
     const fetchListing = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/listing/get/${params.listingId}`
-        );
+        const res = await axios.get(`/api/listing/get/${params.listingId}`);
         setListing(res.data.listing);
         // console.log(res.data.listing);
         setLoading(false);

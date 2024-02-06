@@ -32,17 +32,12 @@ export const signIn = async (req, res, next) => {
 
     const { password: pass, ...rest } = vaildUser._doc;
 
-    res
-      .cookie('access_token', token, {
-        httpOnly: true,
-      })
-      .status(200)
-      .json({
-        user: rest,
-        success: true,
-        message: 'User signed in successfully',
-        token,
-      });
+    res.status(200).json({
+      user: rest,
+      success: true,
+      message: 'User signed in successfully',
+      token,
+    });
   } catch (error) {
     next(error);
   }
@@ -56,17 +51,12 @@ export const google = async (req, res, next) => {
 
       const { password: pass, ...rest } = user._doc;
 
-      res
-        .cookie('access_token', token, {
-          httpOnly: true,
-        })
-        .status(200)
-        .json({
-          user: rest,
-          success: true,
-          message: 'User signed in successfully',
-          token,
-        });
+      res.status(200).json({
+        user: rest,
+        success: true,
+        message: 'User signed in successfully',
+        token,
+      });
     } else {
       const createPassword = Math.random().toString(36).slice(-8);
       const hashPassword = bcryptjs.hashSync(createPassword, 10);
@@ -83,17 +73,12 @@ export const google = async (req, res, next) => {
 
       const { password: pass, ...rest } = newUser._doc;
 
-      res
-        .cookie('access_token', token, {
-          httpOnly: true,
-        })
-        .status(200)
-        .json({
-          user: rest,
-          success: true,
-          message: 'User registerd successfully',
-          token,
-        });
+      res.status(200).json({
+        user: rest,
+        success: true,
+        message: 'User registerd successfully',
+        token,
+      });
     }
   } catch (error) {
     next(error);

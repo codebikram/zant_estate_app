@@ -66,7 +66,7 @@ const Profile = () => {
     try {
       dispatch(updateUserStart());
       const res = await axios.put(
-        `http://localhost:5000/api/user/update/${currentUser._id}`,
+        `/api/user/update/${currentUser._id}`,
         formData,
         {
           headers: {
@@ -86,7 +86,7 @@ const Profile = () => {
     try {
       dispatch(deleteUserStart());
       const res = await axios.delete(
-        `http://localhost:5000/api/user/delete/${currentUser._id}`,
+        `/api/user/delete/${currentUser._id}`,
         {
           headers: {
             token: localStorage.getItem('access_token'),
@@ -111,7 +111,7 @@ const Profile = () => {
   const showListings = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/user/listings/${currentUser._id}`,
+        `/api/user/listings/${currentUser._id}`,
         {
           headers: {
             token: localStorage.getItem('access_token'),
@@ -127,7 +127,7 @@ const Profile = () => {
   const handleDelete = async (id) => {
     try {
       const res = await axios.delete(
-        `http://localhost:5000/api/listing/delete/${id}`,
+        `/api/listing/delete/${id}`,
         {
           headers: {
             token: localStorage.getItem('access_token'),

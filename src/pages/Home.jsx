@@ -15,9 +15,7 @@ const Home = () => {
   useEffect(() => {
     const fetchOfferListing = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/listing/get?offer=true&limit=4`
-        );
+        const res = await axios.get(`/api/listing/get?offer=true&limit=4`);
         setOfferListing(res.data);
         fetchSaleListing();
       } catch (error) {
@@ -26,9 +24,7 @@ const Home = () => {
     };
     const fetchSaleListing = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/listing/get?type=sale&limit=4`
-        );
+        const res = await axios.get(`/api/listing/get?type=sale&limit=4`);
         setSaleListing(res.data);
         fetchRentListing();
       } catch (error) {
@@ -37,9 +33,7 @@ const Home = () => {
     };
     const fetchRentListing = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/listing/get?type=rent&limit=4`
-        );
+        const res = await axios.get(`/api/listing/get?type=rent&limit=4`);
         setRentListing(res.data);
       } catch (error) {
         console.log(error);

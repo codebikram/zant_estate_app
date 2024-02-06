@@ -29,7 +29,7 @@ const SignIn = () => {
     dispatch(signInStart());
     try {
       const res = await axios.post(
-        `http://localhost:5000/api/auth/signin`,
+        `/api/auth/signin`,
         formData
       );
       if (res.data.success) {

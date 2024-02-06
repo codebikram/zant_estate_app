@@ -53,7 +53,7 @@ const Search = () => {
         setShowMore(false);
         const searchQuery = urlParams.toString();
         const res = await axios.get(
-          `http://localhost:5000/api/listing/get?${searchQuery}`
+          `/api/listing/get?${searchQuery}`
         );
         console.log(res.data.length);
         if (res.data.length < 6) {
@@ -120,7 +120,7 @@ const Search = () => {
     urlParams.set('startIndex', startIndex);
     const searchQuery = urlParams.toString();
     const res = await axios.get(
-      `http://localhost:5000/api/listing/get?${searchQuery}`
+      `/api/listing/get?${searchQuery}`
     );
     if (res.data.length < 6) {
       setShowMore(false);
