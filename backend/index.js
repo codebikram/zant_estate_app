@@ -12,6 +12,7 @@ app.use(json());
 
 const PORT = process.env.SERVER;
 const MONGODB_URL = process.env.MONGODB_URL;
+console.log(PORT);
 
 // mongodb connection
 mongoose
