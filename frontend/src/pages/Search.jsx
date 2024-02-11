@@ -52,10 +52,7 @@ const Search = () => {
       try {
         setShowMore(false);
         const searchQuery = urlParams.toString();
-        const res = await axios.get(
-          `/api/listing/get?${searchQuery}`
-        );
-        console.log(res.data.length);
+        const res = await axios.get(`/api/listing/get?${searchQuery}`);
         if (res.data.length < 6) {
           setShowMore(false);
         } else {
@@ -119,9 +116,7 @@ const Search = () => {
     const urlParams = new URLSearchParams(location.search);
     urlParams.set('startIndex', startIndex);
     const searchQuery = urlParams.toString();
-    const res = await axios.get(
-      `/api/listing/get?${searchQuery}`
-    );
+    const res = await axios.get(`/api/listing/get?${searchQuery}`);
     if (res.data.length < 6) {
       setShowMore(false);
     }
