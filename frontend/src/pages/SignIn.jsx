@@ -29,7 +29,7 @@ const SignIn = () => {
     dispatch(signInStart());
     try {
       const res = await axios.post(
-        `/api/auth/signin`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/auth/signin`,
         formData
       );
       if (res.data.success) {

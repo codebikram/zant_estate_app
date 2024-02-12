@@ -66,7 +66,7 @@ const Profile = () => {
     try {
       dispatch(updateUserStart());
       const res = await axios.put(
-        `/api/user/update/${currentUser._id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/update/${currentUser._id}`,
         formData,
         {
           headers: {
@@ -86,7 +86,7 @@ const Profile = () => {
     try {
       dispatch(deleteUserStart());
       const res = await axios.delete(
-        `/api/user/delete/${currentUser._id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/delete/${currentUser._id}`,
         {
           headers: {
             token: localStorage.getItem('access_token'),
@@ -111,7 +111,7 @@ const Profile = () => {
   const showListings = async () => {
     try {
       const res = await axios.get(
-        `/api/user/listings/${currentUser._id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/user/listings/${currentUser._id}`,
         {
           headers: {
             token: localStorage.getItem('access_token'),
@@ -127,7 +127,7 @@ const Profile = () => {
   const handleDelete = async (id) => {
     try {
       const res = await axios.delete(
-        `/api/listing/delete/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/listing/delete/${id}`,
         {
           headers: {
             token: localStorage.getItem('access_token'),

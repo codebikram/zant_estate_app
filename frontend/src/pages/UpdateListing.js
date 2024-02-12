@@ -39,7 +39,7 @@ const UpdateListing = () => {
     const fetchListing = async () => {
       try {
         const listingId = params.listingId;
-        const res = await axios.get(`/api/listing/get/${listingId}`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/listing/get/${listingId}`);
         setFormData(res.data.listing);
       } catch (error) {
         console.log(error);
@@ -126,7 +126,7 @@ const UpdateListing = () => {
     try {
       setLoading(true);
       const res = await axios.put(
-        `/api/listing/update/${formData._id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/listing/update/${formData._id}`,
         formData,
         {
           headers: {

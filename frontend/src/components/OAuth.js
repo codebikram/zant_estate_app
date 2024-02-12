@@ -18,11 +18,14 @@ function OAuth() {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
       dispatch(signInStart());
-      const res = await axios.post('/api/auth/google', {
-        name: result.user.displayName,
-        photo: result.user.photoURL,
-        email: result.user.email,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/auth/google`,
+        {
+          name: result.user.displayName,
+          photo: result.user.photoURL,
+          email: result.user.email,
+        }
+      );
       dispatch(signInSuccess(res.data.user));
       localStorage.setItem('access_token', res.data.token);
       navigate('/');
