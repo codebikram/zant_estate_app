@@ -12,11 +12,12 @@ const Home = () => {
   const [offerListing, setOfferListing] = useState([]);
   const [saleListing, setSaleListing] = useState([]);
   const [rentListing, setRentListing] = useState([]);
+  const URL = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
     const fetchOfferListing = async () => {
       try {
         const res = await axios.get(
-          `https://zant-estate-backend.onrender.com/api/listing/get?offer=true&limit=4`
+          `${URL}/api/listing/get?offer=true&limit=4`
         );
         setOfferListing(res.data);
         fetchSaleListing();
@@ -26,7 +27,7 @@ const Home = () => {
     };
     const fetchSaleListing = async () => {
       try {
-        const res = await axios.get(`/api/listing/get?type=sale&limit=4`);
+        const res = await axios.get(`${URL}/api/listing/get?type=sale&limit=4`);
         setSaleListing(res.data);
         fetchRentListing();
       } catch (error) {
@@ -35,7 +36,7 @@ const Home = () => {
     };
     const fetchRentListing = async () => {
       try {
-        const res = await axios.get(`/api/listing/get?type=rent&limit=4`);
+        const res = await axios.get(`${URL}/api/listing/get?type=rent&limit=4`);
         setRentListing(res.data);
       } catch (error) {
         console.log(error);
