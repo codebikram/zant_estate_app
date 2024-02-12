@@ -15,7 +15,9 @@ const Home = () => {
   useEffect(() => {
     const fetchOfferListing = async () => {
       try {
-        const res = await axios.get(`/api/listing/get?offer=true&limit=4`);
+        const res = await axios.get(
+          `https://zant-estate-backend.onrender.com/api/listing/get?offer=true&limit=4`
+        );
         setOfferListing(res.data);
         fetchSaleListing();
       } catch (error) {

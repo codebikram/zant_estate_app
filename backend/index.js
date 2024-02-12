@@ -1,6 +1,7 @@
 import express, { json } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js';
 import listingRouter from './routes/listing.route.js';
@@ -9,6 +10,13 @@ const app = express();
 
 //allow json data as an input
 app.use(json());
+app.use(
+  cors({
+    origin: ['http://localhost:3000', 'https://zantestate.netlify.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+  })
+);
 
 const PORT = process.env.SERVER;
 const MONGODB_URL = process.env.MONGODB_URL;
