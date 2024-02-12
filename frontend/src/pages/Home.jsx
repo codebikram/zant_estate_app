@@ -16,7 +16,6 @@ const Home = () => {
     const URL = process.env.REACT_APP_BACKEND_URL;
     const fetchOfferListing = async () => {
       try {
-        console.log(URL);
         const res = await axios.get(
           `${URL}/api/listing/get?offer=true&limit=4`
         );
