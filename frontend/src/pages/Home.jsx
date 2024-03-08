@@ -12,17 +12,21 @@ const Home = () => {
   const [offerListing, setOfferListing] = useState([]);
   const [saleListing, setSaleListing] = useState([]);
   const [rentListing, setRentListing] = useState([]);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const URL = process.env.REACT_APP_BACKEND_URL;
     const fetchOfferListing = async () => {
       try {
+        setLoading(true);
         const res = await axios.get(
           `${URL}/api/listing/get?offer=true&limit=4`
         );
         setOfferListing(res.data);
+        setLoading(false);
         fetchSaleListing();
       } catch (error) {
         console.log(error);
+        setLoading(false);
       }
     };
     const fetchSaleListing = async () => {
@@ -67,6 +71,9 @@ const Home = () => {
           Let's get started
         </Link>
       </div>
+      {loading && (
+        <h1 className='text-center text-slate-700 text-xl'>Loading...</h1>
+      )}
       <div className='p-3'>
         {offerListing && offerListing.length > 0 && (
           <div>
